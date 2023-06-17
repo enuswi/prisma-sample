@@ -1,6 +1,14 @@
-const hoge = 1;
-const fuga = 2;
+import { Link, User } from "./db";
 
-const piyo = hoge + fuga;
+const database = new Link();
 
-console.log(piyo);
+//database.create("test", "https://yahoo.com");
+const user = new User();
+user.create();
+
+const run = async () => {
+  const list = await database.getList();
+  list.map(item => console.log(item));
+};
+
+run();
