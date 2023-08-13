@@ -1,0 +1,7 @@
+POST http://localhost:3000/links
+Content-Type: application/json
+
+{
+  "description": "abc",
+  "url": "def"
+}

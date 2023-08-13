@@ -1,0 +1,7 @@
+PUT http://localhost:3000/links/1
+Content-Type: application/json
+
+{
+  "description": "{title}",
+  "url": "{body}"
+}
