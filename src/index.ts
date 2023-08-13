@@ -45,6 +45,18 @@ app.get('/links', async (req: express.Request, res: express.Response) => {
   res.send(JSON.stringify(list));
 });
 
+//詳細取得
+app.get('/links/:id', async (req: express.Request, res: express.Response) => {
+  const { id } = req.params;
+  const item = await database.find(Number(id));
+  if (!item) {
+    res.status(404).send(JSON.stringify({ error: 'not found.' }));
+    return;
+  }
+
+  res.send(JSON.stringify(item));
+});
+
 //登録
 app.post('/links', async (req: express.Request, res: express.Response) => {
   const { description, url } = req.body;

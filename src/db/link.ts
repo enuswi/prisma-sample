@@ -36,4 +36,12 @@ export class Link extends abstractDb {
   getList = async () => {
     return await this.prisma.link.findMany();
   };
+
+  find = async (id: number) => {
+    return await this.prisma.link.findFirst({
+      where: {
+        id,
+      }
+    });
+  };
 }
