@@ -26,9 +26,17 @@ export class Link extends abstractDb {
   };
 
   public delete = async (id: number) => {
-    await this.prisma.link.delete({
+    //await this.prisma.link.delete({
+    //  where: {
+    //    id,
+    //  }
+    //});
+    await this.prisma.link.update({
       where: {
         id,
+      },
+      data: {
+        delete_falg: 1,
       }
     });
   };
