@@ -4,7 +4,7 @@ export class Link extends abstractDb {
     super();
   }
 
-  create = async (description: string, url: string) => {
+  public create = async (description: string, url: string) => {
     await this.prisma.link.create({
       data: {
         description,
@@ -13,7 +13,7 @@ export class Link extends abstractDb {
     });
   };
 
-  update = async (id: number, description: string, url: string) => {
+  public update = async (id: number, description: string, url: string) => {
     await this.prisma.link.update({
       where: {
         id,
@@ -25,7 +25,7 @@ export class Link extends abstractDb {
     });
   };
 
-  delete = async (id: number) => {
+  public delete = async (id: number) => {
     await this.prisma.link.delete({
       where: {
         id,
@@ -33,11 +33,11 @@ export class Link extends abstractDb {
     });
   };
 
-  getList = async () => {
+  public getList = async () => {
     return await this.prisma.link.findMany();
   };
 
-  find = async (id: number) => {
+  public find = async (id: number) => {
     return await this.prisma.link.findFirst({
       where: {
         id,

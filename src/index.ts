@@ -36,11 +36,15 @@ app.listen(3000, () => {
 });
 
 import { Link } from "./db/link";
-const database = new Link();
+import { User } from "./db/user";
+
+const link = new Link();
+const user = new User();
+
 
 //一覧取得
 app.get('/links', async (req: express.Request, res: express.Response) => {
-  const list = await database.getList();
+  const list = await link.getList();
 
   res.send(JSON.stringify(list));
 });
@@ -48,7 +52,7 @@ app.get('/links', async (req: express.Request, res: express.Response) => {
 //詳細取得
 app.get('/links/:id', async (req: express.Request, res: express.Response) => {
   const { id } = req.params;
-  const item = await database.find(Number(id));
+  const item = await link.find(Number(id));
   if (!item) {
     res.status(404).send(JSON.stringify({ error: 'not found.' }));
     return;
@@ -65,7 +69,7 @@ app.post('/links', async (req: express.Request, res: express.Response) => {
     return;
   }
 
-  await database.create(description, url);
+  await link.create(description, url);
 
   res.send(JSON.stringify({}));
 });
@@ -79,7 +83,7 @@ app.put('/links/:id', async (req: express.Request, res: express.Response) => {
     return;
   }
 
-  await database.update(Number(id), description, url);
+  await link.update(Number(id), description, url);
 
   res.send(JSON.stringify({}));
 });
@@ -88,7 +92,32 @@ app.put('/links/:id', async (req: express.Request, res: express.Response) => {
 app.delete('/links/:id', async (req: express.Request, res: express.Response) => {
   const { id } = req.params;
 
-  await database.delete(Number(id));
+  await link.delete(Number(id));
 
   res.send(JSON.stringify({}));
+});
+
+//登録
+app.post('/users', async (req: express.Request, res: express.Response) => {
+  const { name, email, post, profile } = req.body;
+  if (!email || !post) {
+    res.status(400).send(JSON.stringify({ error: 'email or post is empty.' }));
+    return;
+  }
+
+  await user.create({
+    email,
+    post: { title: post.title },
+    name,
+    profile: { bio: profile?.bio }
+  });
+
+  res.send(JSON.stringify({}));
+});
+
+//一覧取得
+app.get('/users', async (req: express.Request, res: express.Response) => {
+  const list = await user.getList();
+
+  res.send(JSON.stringify(list));
 });

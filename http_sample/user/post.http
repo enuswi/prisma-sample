@@ -1,0 +1,13 @@
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "abc",
+  "email": "abc6@def.ghi",
+  "post": {
+    "title": "post title"
+  },
+  "profile": {
+    "bio": "profile bio"
+  }
+}
