@@ -36,7 +36,7 @@ export class User extends abstractDb {
     await this.prisma.user.create({
       data: {
         name: 'Alice',
-        email: 'alice@prisma.io',
+        email: 'alice_2@prisma.io',
         posts: {
           create: { title: 'Hello World' },
         },
