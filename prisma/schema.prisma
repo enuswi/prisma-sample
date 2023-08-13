@@ -15,6 +15,7 @@ model Link {
   create_at DateTime @default(now())
   description String
   url String
+  delete_falg Int?
 }
 
 model Post {
