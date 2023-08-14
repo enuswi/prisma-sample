@@ -16,6 +16,7 @@ model Link {
   description String
   url String
   delete_falg Int?
+  deleted Boolean @default(false)
 }
 
 model Post {
