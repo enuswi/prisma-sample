@@ -36,7 +36,7 @@ export class Link extends abstractDb {
         id,
       },
       data: {
-        delete_falg: 1,
+        deleted: true,
       }
     });
   };

@@ -1,0 +1,1 @@
+DROP TRIGGER IF EXISTS on_deleted_link;
