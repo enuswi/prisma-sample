@@ -2,7 +2,14 @@
   "name": "prisma-sample",
   "version": "1.0.0",
   "description": "",
+  "private": true,
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "main": "dist/index.js",
   "scripts": {
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
     "clean": "rimraf dist/*",
     "etsc": "npx etsc",
     "build": "npm-run-all clean etsc",
