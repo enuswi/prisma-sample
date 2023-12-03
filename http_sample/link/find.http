@@ -1,2 +1,2 @@
-GET http://localhost:3000/links/4
+GET http://localhost:8080/links/4
 Content-Type: application/json
